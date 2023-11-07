@@ -9,19 +9,10 @@
 class WindowsManager : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(QQuickWindow * window READ window WRITE setWindow NOTIFY windowChanged)
 
 public:
     explicit WindowsManager();
     ~WindowsManager() = default;
-
-public:
-    //Q_PROPERTY methods
-    QQuickWindow *window() const;
-    void setWindow(QQuickWindow *window);
-
-signals:
-    void windowChanged(QQuickWindow *window);
 
 private:
     void InitWindowsManager();
