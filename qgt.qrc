@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/qml">
+        <file alias="MainRootWindow.qml">src/UI/MainRootWindow.qml</file>
+        <file alias="QGTControl/Controls/qmldir">src/UI/QGTControl/Controls/qmldir</file>
+        <file alias="SectionHeader.qml">src/UI/SectionHeader.qml</file>
+    </qresource>
+</RCC>
