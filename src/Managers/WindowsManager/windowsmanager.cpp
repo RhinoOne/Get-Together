@@ -8,6 +8,7 @@ WindowsManager::WindowsManager() :
 
 void WindowsManager::InitWindowsManager()
 {
-    const QUrl url(QStringLiteral("qrc:/qml/ui/MainRootWindow.qml"));
+    m_engine.addImportPath("qrc:/qml");
+    const QUrl url(QStringLiteral("qrc:/qml/MainRootWindow.qml"));
     m_engine.load(url);
 }
