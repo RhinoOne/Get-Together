@@ -1,13 +1,23 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.12
-
-import QGTControl.Controls 1.0
+import QtQuick.Layouts 1.11
 
 ApplicationWindow {
-    width: 640
-    height: 480
+    id: root
+    property bool isAuthorized: false
+    width: 480
+    height: 500
     visible: true
-    title: qsTr("Hello World")
+    title: qsTr("Get Together")
 
-    SectionHeader{}
+    Loader{
+        id: mainWindowLoader
+        anchors.fill: parent
+    }
+
+    Component.onCompleted: {
+        if(!isAuthorized){
+            mainWindowLoader.source = "Authorization.qml"
+        }
+    }
 }
