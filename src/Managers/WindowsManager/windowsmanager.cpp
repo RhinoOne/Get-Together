@@ -1,6 +1,7 @@
 #include "windowsmanager.h"
 
-WindowsManager::WindowsManager() :
+WindowsManager::WindowsManager(QObject *parent) :
+    QObject{parent},
     m_window(nullptr)
 {
     InitWindowsManager();

@@ -11,13 +11,13 @@ ApplicationWindow {
     title: qsTr("Get Together")
 
     Loader{
-        id: mainWindowLoader
+        id: main_window_loader
         anchors.fill: parent
     }
 
     Component.onCompleted: {
         if(!isAuthorized){
-            mainWindowLoader.source = "Authorization.qml"
+            main_window_loader.source = "Authorization.qml"
         }
     }
 }
