@@ -6,6 +6,9 @@ Rectangle{
     id: root
     implicitHeight: 60
 
+    border.color: "black"
+    border.width: 1
+
     GridLayout{
         rows: 1
         columns: 3

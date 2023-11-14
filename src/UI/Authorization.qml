@@ -10,18 +10,67 @@ Page{
     header: SectionHeader{
 
     }
-    GridLayout{
-        rows: 1
-        columns:3
+    //Main content
+    ColumnLayout{
+        anchors.fill: parent
+
+        anchors.leftMargin:     10
+        anchors.rightMargin:    10
+        anchors.topMargin:      15
+        anchors.bottomMargin:   15
 
         RowLayout{
-            Layout.fillHeight:  true
-            Layout.fillWidth:   true
-            Layout.columnSpan: 3
-            Layout.margins:     15
+            Layout.alignment: Qt.AlignHCenter
+            Text{
+                text: qsTr("Authorization")
+                font.pixelSize: 15
+            }
+        }
 
+        RowLayout{
+            Layout.alignment: Qt.AlignHCenter
+            ColumnLayout{
+                Text{
+                    text: qsTr("Login")
+                    font.pixelSize: 13
+
+                    Layout.bottomMargin: 10
+                }
+                TextField{
+                    id: login_authorization
+                }
+            }
+        }
+
+        RowLayout{
+            Layout.alignment: Qt.AlignHCenter
+            ColumnLayout{
+                Text{
+                    text: qsTr("Password")
+                    font.pixelSize: 13
+
+                    Layout.bottomMargin: 10
+                }
+                TextField{
+                    id: pass_authorization
+                    echoMode: TextInput.Password
+                }
+            }
+        }
+
+        RowLayout{
+            Layout.alignment: Qt.AlignHCenter
             Button{
-                text: qsTr("text")
+                text:   qsTr("Sign in")
+            }
+        }
+        RowLayout{
+            Layout.alignment: Qt.AlignHCenter
+            Button{
+                text:   qsTr("Help, I can't sign in")
+                background: Rectangle{
+                    border.width: 1
+                }
             }
         }
     }
