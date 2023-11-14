@@ -1,3 +1,4 @@
 module QGTControl.Controls
 
-SectionHeader   1.0 SectionHeader.qml
+SectionHeader           1.0 SectionHeader.qml
+SectionFooter           1.0 SectionFooter.qml

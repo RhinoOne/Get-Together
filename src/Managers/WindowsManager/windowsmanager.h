@@ -11,7 +11,7 @@ class WindowsManager : public QObject
     Q_OBJECT
 
 public:
-    explicit WindowsManager();
+    explicit WindowsManager(QObject *parent = nullptr);
     ~WindowsManager() = default;
 
 private:
