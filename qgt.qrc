@@ -5,6 +5,6 @@
         <file alias="QGTControl/Controls/qmldir">src/UI/QGTControl/Controls/qmldir</file>
         <file alias="QGTControl/Controls/SectionHeader.qml">src/UI/QGTControl/SectionHeader.qml</file>
         <file alias="QGTControl/Controls/SectionFooter.qml">src/UI/QGTControl/SectionFooter.qml</file>
-        <file alias="HelperSignIn.qml">src/UI/HelperSignIn.qml</file>
+	<file alias="HelperSignIn.qml">src/UI/HelperSignIn.qml</file>
     </qresource>
 </RCC>

@@ -1,6 +1,6 @@
 #include <QGuiApplication>
 
-#include "Managers/WindowsManager/windowsmanager.h"
+#include "Managers/WindowsManager/WindowsManager.h"
 #include <QDirIterator>
 
 int main(int argc, char *argv[])

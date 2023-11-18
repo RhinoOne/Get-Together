@@ -20,6 +20,7 @@ Rectangle{
             Layout.bottomMargin: 10
 
             Layout.column: 0
+
             Text{
                 text: qsTr("Logo")
             }
