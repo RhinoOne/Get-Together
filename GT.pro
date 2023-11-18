@@ -5,13 +5,15 @@ QT += quick
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-        src/Managers/AuthorizationManager/authorizationmanager.cpp \
-        src/Managers/WindowsManager/windowsmanager.cpp \
-        src/main.cpp
+        src/Authorization/AuthorizationController.cpp \
+        src/Managers/SessionManager/SessionManager.cpp \
+        src/Managers/WindowsManager/WindowsManager.cpp \
+        src/main.cpp \
 
 HEADERS += \
-    src/Managers/AuthorizationManager/authorizationmanager.h \
-    src/Managers/WindowsManager/windowsmanager.h
+        src/Authorization/AuthorizationController.h \
+        src/Managers/SessionManager/SessionManager.h \
+        src/Managers/WindowsManager/WindowsManager.h \
 
 RESOURCES += qgt.qrc
 

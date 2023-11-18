@@ -1,5 +1,5 @@
-#ifndef WINDOWSMANAGER_H
-#define WINDOWSMANAGER_H
+#ifndef WINDOWSMASNAGER_H
+#define WINDOWSMASNAGER_H
 
 #include <QObject>
 #include <QQuickWindow>
@@ -18,8 +18,8 @@ private:
     void InitWindowsManager();
 
 private:
-    QQuickWindow *m_window;
-    QQmlApplicationEngine m_engine;
+    QQuickWindow *_window;
+    QQmlApplicationEngine _engine;
 };
 
-#endif // WINDOWSMANAGER_H
+#endif // WINDOWSMASNAGER_H

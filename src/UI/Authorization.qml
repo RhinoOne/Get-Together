@@ -3,6 +3,7 @@ import QtQuick.Controls 2.15
 import QtQuick.Layouts 1.11
 
 import QGTControl.Controls 1.0
+import QGTControl.Controllers 1.0
 
 Page{
     id: root
@@ -11,74 +12,118 @@ Page{
 
     }
     //Main content
-    Loader{
-        id: loader_helper
-        anchors.fill: parent
-        sourceComponent: authorization_content
+
+    function checkingFieldsComplete() {
+        if (login_authorization.text.length == 0 ||
+            pass_authorization.text.length  == 0) {
+            authorization_error_message.visible = true
+            authorization_error_message.text    = qsTr("Error: not all fields are filled in")
+            authorization_error_message.color   = qsTr("#da2828")
+
+            return false
+        }
+        return true
     }
-    Component{
-        id: authorization_content
-        ColumnLayout{
-            anchors.fill: parent
 
-            anchors.leftMargin:     10
-            anchors.rightMargin:    10
-            anchors.topMargin:      15
-            anchors.bottomMargin:   15
+    function showAuthorizationError() {
+        authorization_error_message.visible = true
+        authorization_error_message.text    = qsTr("Error: Please check your password\nand login name and try again")
+        authorization_error_message.color   = qsTr("#da2828")
+    }
 
-            RowLayout{
-                Layout.alignment: Qt.AlignHCenter
+    Connections{
+        target: authorization_controller
+        function onAuthorizationFailed() {
+            showAuthorizationError()
+        }
+    }
+
+    ColumnLayout{
+        anchors.fill: parent
+
+        anchors.leftMargin:     10
+        anchors.rightMargin:    10
+        anchors.topMargin:      15
+        anchors.bottomMargin:   15
+
+        RowLayout{
+            Layout.alignment: Qt.AlignHCenter
+            Text{
+                text: qsTr("Authorization")
+                font.pixelSize: 15
+            }
+        }
+
+        RowLayout{
+            Layout.alignment: Qt.AlignHCenter
+            Layout.topMargin:       10
+            ColumnLayout{
                 Text{
-                    text: qsTr("Authorization")
-                    font.pixelSize: 15
+                    text: qsTr("Login")
+                    font.pixelSize: 13
+
+                    Layout.bottomMargin: 10
+                }
+                TextField{
+                    id: login_authorization
                 }
             }
+        }
 
-            RowLayout{
-                Layout.alignment: Qt.AlignHCenter
-                ColumnLayout{
-                    Text{
-                        text: qsTr("Login")
-                        font.pixelSize: 13
+        RowLayout{
+            Layout.alignment: Qt.AlignHCenter
+            Layout.topMargin:       10
+            ColumnLayout{
+                Text{
+                    text: qsTr("Password")
+                    font.pixelSize: 13
 
-                        Layout.bottomMargin: 10
-                    }
-                    TextField{
-                        id: login_authorization
+                    Layout.bottomMargin: 10
+                }
+                TextField{
+                    id: pass_authorization
+                    echoMode: TextInput.Password
+                }
+            }
+        }
+        RowLayout{
+            Layout.alignment:       Qt.AlignHCenter
+            Layout.topMargin:       10
+            Layout.bottomMargin:    10
+
+            Rectangle{
+                implicitHeight: 25
+                implicitWidth: authorization_error_message.contentWidth
+
+                Text{
+                    id: authorization_error_message
+                    verticalAlignment: Text.AlignVCenter
+                    font.pixelSize: 13
+                    visible: false
+                }
+            }
+        }
+        RowLayout{
+            Layout.alignment: Qt.AlignHCenter
+            Layout.bottomMargin:    10
+            Button{
+                text:   qsTr("Sign in")
+                implicitWidth: login_authorization.width
+                onClicked: {
+                    if(checkingFieldsComplete()) {
+                        authorization_controller.signIn(login_authorization.text, pass_authorization.text)
                     }
                 }
             }
-
-            RowLayout{
-                Layout.alignment: Qt.AlignHCenter
-                ColumnLayout{
-                    Text{
-                        text: qsTr("Password")
-                        font.pixelSize: 13
-
-                        Layout.bottomMargin: 10
-                    }
-                    TextField{
-                        id: pass_authorization
-                        echoMode: TextInput.Password
-                    }
-                }
-            }
-
-            RowLayout{
-                Layout.alignment: Qt.AlignHCenter
-                Button{
-                    text:   qsTr("Sign in")
-                }
-            }
-            RowLayout{
-                Layout.alignment: Qt.AlignHCenter
-                Layout.bottomMargin: 20
-                Button{
-                    text:   qsTr("Help, I can't sign in")
-                    onClicked: {
-                       loader_helper.source = "HelperSignIn.qml"
-                    }
+        }
+        RowLayout{
+            Layout.alignment: Qt.AlignHCenter
+            Layout.bottomMargin: 30
+            Button{
+                text:   qsTr("Help, I can't sign in")
+                implicitWidth: login_authorization.width
+                onClicked: {
+                   main_window_loader.source = "HelperSignIn.qml"
                 }
             }
         }

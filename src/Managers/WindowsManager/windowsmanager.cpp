@@ -1,15 +1,20 @@
-#include "windowsmanager.h"
+#include "WindowsManager.h"
+#include "../../Authorization/AuthorizationController.h"
 
 WindowsManager::WindowsManager(QObject *parent) :
     QObject{parent},
-    m_window(nullptr)
+    _window(nullptr)
 {
     InitWindowsManager();
 }
 
 void WindowsManager::InitWindowsManager()
 {
-    m_engine.addImportPath("qrc:/qml");
+    const char* kGTControllers = "QGTControl.Controllers";
+
+    _engine.addImportPath("qrc:/qml");
+    qmlRegisterType<AuthorizationController>(kGTControllers, 1, 0, "AuthorizationController");
+
     const QUrl url(QStringLiteral("qrc:/qml/MainRootWindow.qml"));
-    m_engine.load(url);
+    _engine.load(url);
 }
