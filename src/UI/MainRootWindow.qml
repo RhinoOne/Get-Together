@@ -24,7 +24,7 @@ ApplicationWindow {
     Connections{
         target: authorization_controller
         function onAuthorizationSuccessfully() {
-//            main_window_loader.source = "Test.qml"
+            main_window_loader.source = "MainContentWindow.qml"
         }
     }
 

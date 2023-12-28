@@ -11,13 +11,12 @@ Page{
     header: SectionHeader{
 
     }
-    //Main content
 
     function checkingFieldsComplete() {
-        if (login_authorization.text.length == 0 ||
-            pass_authorization.text.length  == 0) {
+        if (login_authorization.text.length === 0 ||
+            pass_authorization.text.length  === 0) {
             authorization_error_message.visible = true
-            authorization_error_message.text    = qsTr("Error: not all fields are filled in")
+            authorization_error_message.text    = qsTr("Not all fields are filled in")
             authorization_error_message.color   = qsTr("#da2828")
 
             return false
@@ -27,7 +26,7 @@ Page{
 
     function showAuthorizationError() {
         authorization_error_message.visible = true
-        authorization_error_message.text    = qsTr("Error: Please check your password\nand login name and try again")
+        authorization_error_message.text    = qsTr("Please check your password\nand login name and try again")
         authorization_error_message.color   = qsTr("#da2828")
     }
 
@@ -38,6 +37,7 @@ Page{
         }
     }
 
+    //Main content
     ColumnLayout{
         anchors.fill: parent
 
@@ -66,6 +66,9 @@ Page{
                 }
                 TextField{
                     id: login_authorization
+                    implicitHeight: 30
+                    implicitWidth: 200
+                    maximumLength: 5
                 }
             }
         }
@@ -83,6 +86,10 @@ Page{
                 TextField{
                     id: pass_authorization
                     echoMode: TextInput.Password
+
+                    implicitHeight: 30
+                    implicitWidth: 200
+                    maximumLength: 5
                 }
             }
         }
@@ -94,6 +101,8 @@ Page{
             Rectangle{
                 implicitHeight: 25
                 implicitWidth: authorization_error_message.contentWidth
+
+                color: "transparent"
 
                 Text{
                     id: authorization_error_message
