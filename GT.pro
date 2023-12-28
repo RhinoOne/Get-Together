@@ -8,12 +8,14 @@ SOURCES += \
         src/Authorization/AuthorizationController.cpp \
         src/Managers/SessionManager/SessionManager.cpp \
         src/Managers/WindowsManager/WindowsManager.cpp \
+    src/SignIn/SignInController.cpp \
         src/main.cpp \
 
 HEADERS += \
         src/Authorization/AuthorizationController.h \
         src/Managers/SessionManager/SessionManager.h \
         src/Managers/WindowsManager/WindowsManager.h \
+    src/SignIn/SignInController.h
 
 RESOURCES += qgt.qrc
 

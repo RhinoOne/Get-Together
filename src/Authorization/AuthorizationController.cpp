@@ -11,7 +11,7 @@ AuthorizationController::AuthorizationController(QObject *parent) :
 
 void AuthorizationController::signIn(QString login, QString pass)
 {
-    if (login == "KILO" && pass == "RIKO") {
+    if (login == "admin" && pass == "admin") {
         _sessionManager = new SessionManager(this);
         _sessionManager->CreateSession();
         _isAuthorized = true;
